@@ -72,7 +72,7 @@ python app.py
 ## 🔥 Preview  
 | Cartoonization Filter | Glasses Filter |
 |----------------------|--------------|
-| ![Cartoonization](https://via.placeholder.com/300) | ![Glasses Filter](https://via.placeholder.com/300) |
+| ![Cartoonization](Original.jpg) | ![Glasses Filter](Glasses.jpg) |
 
 ---
 
