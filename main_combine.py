@@ -16,20 +16,24 @@ os.makedirs('upload', exist_ok=True)
 
 def cartGan(image):
     """Applies the GAN model to cartoonize an image."""
-    frame = cv2.resize(image, (512, 512))
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame = np.expand_dims(frame, 0).astype(np.float32) / 127.5 - 1
+    h, w, _ = image.shape  
 
-    interpreter.set_tensor(input_details[0]['index'], frame)
+    frame = cv2.resize(image, (512, 512))  # Resize for model input
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame_input = np.expand_dims(frame_rgb, 0).astype(np.float32) / 127.5 - 1
+
+    interpreter.set_tensor(input_details[0]['index'], frame_input)
     interpreter.invoke()
     out = interpreter.get_tensor(output_details[0]['index'])
 
-    out = ((out.squeeze() + 1) * 127.5).astype(np.uint8)
-    
-    cv2.imshow('Cartoonized', out)
-    cv2.imshow('Original Image', image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cartoonized = ((out.squeeze() + 1) * 127.5).astype(np.uint8)
+    cartoonized = cv2.cvtColor(cartoonized, cv2.COLOR_RGB2BGR)  # Convert back to BGR
+    cartoonized = cv2.resize(cartoonized, (w, h))  # Resize back to original size
+
+    combined = np.hstack((image, cartoonized))  # Horizontal stacking
+    cv2.imshow('Original vs Cartoonized', combined)
+    cv2.imwrite('Original.jpg', combined)
+
 
 while True:
     ret, frame = cap.read()

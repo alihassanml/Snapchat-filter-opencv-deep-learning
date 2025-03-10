@@ -6,6 +6,8 @@ This project implements real-time Snapchat-like filters using OpenCV and deep le
 
 ---
 
+![Image Description](Original.jpg)
+
 ## 🚀 Features  
 ✅ **Real-time Cartoonization** using a trained deep learning model (TFLite).  
 ✅ **Glasses Filter** using OpenCV and Haar Cascade for eye detection.  
