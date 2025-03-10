@@ -89,7 +89,7 @@ This project is **open-source** and licensed under the **MIT License**.
 ## 📬 Contact  
 👤 **Ali Hassan**  
 🔗 GitHub: [alihassanml](https://github.com/alihassanml)  
-📧 Email: ali.hassan@example.com  
+📧 Email: alihassanbscs99@gmail.com  
 
 ---
 
